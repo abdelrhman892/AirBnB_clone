@@ -17,4 +17,10 @@ class BaseModel:
         self.updated_at = datetime.datetime.now()
 
     def to_dict(self):
-        pass
+        dict_result = {}
+        for key, value in self.__dict__.items():
+            if isinstance(value, datetime):
+                dict_result[key] = value.isoformat()
+            else:
+                dict_result[key] = value
+        return dict_result
