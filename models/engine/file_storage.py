@@ -11,7 +11,7 @@ class FileStorage:
 
     def new(self, obj):
         for key, value in self.__objects.items():
-            if key == (self.__class__.__name__, ".id"):
+            if key == (obj.__class__.__name__, obj.id):
                 self.__objects[key] = obj
 
     def save(self):
