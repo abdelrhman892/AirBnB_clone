@@ -20,5 +20,9 @@ class FileStorage:
 
     def reload(self):
         if self.__file_path != "":
-            with open(self.__file_path, "r") as jsonFile:
-                self.__objects = json.load(jsonFile)
+            try:
+                with open(self.__file_path, "r") as jsonFile:
+                    self.__objects = json.load(jsonFile)
+            except FileNotFoundError:
+                # Handle the case if the file is not found
+                pass
