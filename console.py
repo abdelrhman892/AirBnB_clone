@@ -1,14 +1,14 @@
 #!/usr/bin/python3
 import cmd
-from models import base_model
-from datetime import datetime
-from models.engine.file_storage import FileStorage
 from shlex import shlex
+
+from models import storage
+from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
     # classes variable to store
-    classes = {'BaseModel':BaseModel}
+    classes = {'BaseModel': BaseModel}
 
     prompt = "(hbnb) "
     file_path = "file.json"
