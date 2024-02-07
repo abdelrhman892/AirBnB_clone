@@ -1,14 +1,30 @@
 #!/usr/bin/python3
 import cmd
-from shlex import shlex
-
-from models import storage
+import sys
 from models.base_model import BaseModel
+from models.user import User
+from models.amenity import Amenity
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.review import Review
+from datetime import datetime
+from models.engine.file_storage import FileStorage
+from shlex import shlex
+from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
     # classes variable to store
-    classes = {'BaseModel': BaseModel}
+    classes = {
+            'BaseModel': base_model.BaseModel,
+            'User': user.User,
+            'City': city.City,
+            'Place': place.Place,
+            'Review': review.Review,
+            'State': state.State,
+            'Amenity': amenity.Amenity
+    }
 
     prompt = "(hbnb) "
     file_path = "file.json"
@@ -17,9 +33,9 @@ class HBNBCommand(cmd.Cmd):
     # it will be deleted if we don't want it
     def update_classes(self):
         # load existing instances if not loaded
-        storage.reload()
+        FileStorage.reload()
         # Update the classes attr
-        HBNBCommand.classes = list(storage.all().keys())
+        HBNBCommand.classes = FileStorage().all()
 
     def do_create(self, arg):
         if not arg:
@@ -27,8 +43,8 @@ class HBNBCommand(cmd.Cmd):
             return
         ClassName = arg.split()[0]
 
-        if ClassName == "BaseModel":
-            new_instance = BaseModel()
+        if ClassName in HBNBCommand.classes:
+            new_instance = HBNBCommand.classes[ClassName]()
             new_instance.save()
             print(new_instance.id)
         else:
@@ -54,9 +70,9 @@ class HBNBCommand(cmd.Cmd):
         instance_id = arguments[1]
         key = f"{ClassName} {instance_id}"
 
-        if key in storage.all():
-            del storage.all()[key]
-            storage.save()
+        if key in FileStorage.all():
+            del FileStorage().all()[key]
+            FileStorage.save()
         else:
             print("** no instance found **")
 
@@ -73,7 +89,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
 
-        instance = [str(obj) for key, obj in storage.all().items()
+        instance = [str(obj) for key, obj in FileStorage().all().items()
                     if ClassName == key.split(' ')[0]]
         print(instance)
 
@@ -91,18 +107,16 @@ class HBNBCommand(cmd.Cmd):
                 return
 
             # to check if at least the name of the class and it's id present
-            if len(arguments < 2):
+            if len(arguments) < 2:
                 print("** instance id missing **")
-                return
-
-            instance_id = arguments[1]
+                instance_id = arguments[1]
             key = f"{ClassName} {instance_id}"
 
-            if key not in storage.all():
+            if key not in FileStorage().all():
                 print("** no instance found **")
                 return
 
-            instance = storage.all()[key]
+            instance = FileStorage().all()[key]
             print(instance)
 
     def do_update(self, arg):
@@ -122,9 +136,9 @@ class HBNBCommand(cmd.Cmd):
             return
 
         # to check if at least the name of the class and it's id present
-        if len(arguments < 2):
-            print("** instance id missing **")
-            return
+        if len(arguments) < 2:
+             print("** instance id missing **")
+             return
 
         instance_id = arguments_list[1]
         key = f"{ClassName} {instance_id}"
@@ -141,16 +155,16 @@ class HBNBCommand(cmd.Cmd):
         attName = arguments_list[3]
 
         # check if attribute value is missing
-        if len(args_list) < 4:
+        if len(arguments_list) < 4:
             print("** value missing **")
             return
 
         attValue_str = arguments_list[3]
 
         # Get attribute value type and for instance
-        instance = storage.all()[key]
+        instance = FileStorage().all()[key]
         attrValueType = type(getattr(instance, attName, None))
-
+        
         # cast attribute type
         if attrValueType == str:
             attrValue = attValue_str
@@ -172,7 +186,7 @@ class HBNBCommand(cmd.Cmd):
 
         # update and save changes
         setattr(instance, attName, attrValue)
-        storage.save()
+        FileStorage().save()
 
         print("Updated successfully.")
 
