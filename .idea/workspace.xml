@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="29a9bd3f-dab9-40c6-99dd-0175b282be3b" name="Changes" comment="fixing some errors" />
+    <list default="true" id="29a9bd3f-dab9-40c6-99dd-0175b282be3b" name="Changes" comment="fixing some errors">
+      <change beforePath="$PROJECT_DIR$/models/base_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/base_model.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,6 +36,7 @@
     "Python.console.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "abdelrhman",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -61,6 +64,7 @@
       <workItem from="1707347438943" duration="601000" />
       <workItem from="1707424205281" duration="5564000" />
       <workItem from="1707430721188" duration="4295000" />
+      <workItem from="1707435042284" duration="885000" />
     </task>
     <task id="LOCAL-00001" summary="fixing some errors">
       <option name="closed" value="true" />
@@ -70,7 +74,23 @@
       <option name="project" value="LOCAL" />
       <updated>1707433584887</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="fixing some errors">
+      <option name="closed" value="true" />
+      <created>1707435154949</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1707435154949</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fixing some errors">
+      <option name="closed" value="true" />
+      <created>1707435301033</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1707435301033</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
