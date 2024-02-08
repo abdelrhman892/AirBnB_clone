@@ -3,6 +3,7 @@ import uuid
 import datetime
 from models import storage
 
+
 class BaseModel:
     def __init__(self, *args, **kwargs):
         if kwargs:
@@ -15,6 +16,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
             self.updated_at = datetime.datetime.now()
+            storage.new(self)
 
     def __str__(self):
         return ("[{}] ({}) {}"
@@ -22,7 +24,7 @@ class BaseModel:
 
     def save(self):
         self.updated_at = datetime.datetime.now()
-        storage.save() # made the storage implementation
+        storage.save()  # made the storage implementation
 
     def to_dict(self):
         dict_result = {}
