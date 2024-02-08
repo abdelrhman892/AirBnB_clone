@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import json
+import os
 
 
 class FileStorage:
@@ -10,19 +11,14 @@ class FileStorage:
         return self.__objects
 
     def new(self, obj):
-        for key, value in self.__objects.items():
-            if key == (obj.__class__.__name__, obj.id):
-                self.__objects[key] = obj
+        key = (obj.__class__.__name__, obj.id)
+        self.__objects[key] = obj
 
     def save(self):
         with open(self.__file_path, "w") as jsonFile:
             json.dump(self.__objects, jsonFile)
 
     def reload(self):
-        if self.__file_path != "":
-            try:
-                with open(self.__file_path, "r") as jsonFile:
-                    self.__objects = json.load(jsonFile)
-            except FileNotFoundError:
-                # Handle the case if the file is not found
-                pass
+        if os.path.exists(self.__file_path):
+            with open(self.__file_path, "r") as jsonFile:
+                self.__objects = json.load(jsonFile)
