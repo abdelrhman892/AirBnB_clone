@@ -16,9 +16,10 @@ class FileStorage:
 
     def save(self):
         from models.base_model import BaseModel
+        from models.user import User
         objects_to_serialize = {}
         for key, value in self.__objects.items():
-            if isinstance(value, BaseModel):
+            if isinstance(value, BaseModel) or isinstance(value, User):
                 objects_to_serialize[key] = value.to_dict()
             else:
                 objects_to_serialize[key] = value
