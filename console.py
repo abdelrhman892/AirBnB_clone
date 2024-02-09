@@ -85,7 +85,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         instance = [str(obj) for key, obj in storage.all().items()
-                    if ClassName == key.split(' ')[0]]
+                    if ClassName == key.split('.')[0]]
         print(instance)
 
     # Prints the string representation of
@@ -97,26 +97,24 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
 
-            ClassName = arguments[0]
+        ClassName = arguments[0]
+        if ClassName not in HBNBCommand.classes:
+            print("** class doesn't exist **")
+            return
 
-            if ClassName not in HBNBCommand.classes:
-                print("** class doesn't exist **")
-                return
+        if len(arguments) < 2:
+            print("** instance id missing **")
+            return
 
-            # to check if at least the name of the class and it's id present
-            if len(arguments) < 2:
-                print("** instance id missing **")
-                return
+        instance_id = arguments[1]
+        key = f"{ClassName}.{instance_id}"
 
-            instance_id = arguments[1]
-            key = f"{ClassName} {instance_id}"
+        if key not in storage.all():
+            print("** no instance found **")
+            return
 
-            if key not in storage.all():
-                print("** no instance found **")
-                return
-
-            instance = storage.all()[key]
-            print(instance)
+        instance = storage.all()[key]
+        print(instance)
 
     def do_update(self, arg):
         """Updates an instance based on the class name and id."""
@@ -134,8 +132,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
 
-        # to check if at least the name of the class and it's id present
         if len(arguments_list) < 2:
+            """to check if at least the name of the class and it's id present"""
             print("** instance id missing **")
             return
 
