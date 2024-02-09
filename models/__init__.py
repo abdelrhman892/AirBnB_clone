@@ -4,5 +4,5 @@ from models.engine import file_storage
 storage = file_storage.FileStorage()
 storage.reload()
 
-# make storage accessable
+# make storage accessible
 __all__ = ['storage']
