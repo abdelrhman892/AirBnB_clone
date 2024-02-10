@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import importlib
 import json
 import os
 
@@ -18,10 +17,20 @@ class FileStorage:
     def save(self):
         from models.base_model import BaseModel
         from models.user import User
+        from models.place import Place
+        from models.state import State
+        from models.city import City
+        from models.amenity import Amenity
+        from models.review import Review
         objects_to_serialize = {}
         for key, value in self.__objects.items():
             if (isinstance(value, BaseModel) or
-                    isinstance(value, User)):
+                    isinstance(value, User) or
+                    isinstance(value, Place) or
+                    isinstance(value, State) or
+                    isinstance(value, City) or
+                    isinstance(value, Amenity) or
+                    isinstance(value, Review)):
                 objects_to_serialize[key] = value.to_dict()
             else:
                 objects_to_serialize[key] = value
