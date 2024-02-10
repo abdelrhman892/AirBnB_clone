@@ -29,3 +29,47 @@ the specified ID for the given check-in and check-out dates.
 - `list_reservations`:  List all reservations associated with your account.
 - `help`: Display a list of available commands and their usage instructions.
 - `exit` or `quit`: Exit the command interpreter.
+## examples 
+    
+```
+(hbnb) help
+
+Documented commands (type help <topic>):
+========================================
+EOF  all  create  destroy  help  quit  show  update
+```    
+```
+(hbnb) create BaseModel
+7fa29982-fe32-4dcc-aca5-35a4a249a517
+```
+```
+(hbnb) all
+["[BaseModel] (7fa29982-fe32-4dcc-aca5-35a4a249a517) {'id': '7fa29982-fe32-4dcc-aca5-35a4a249a517',
+ 'created_at': datetime.datetime(2024, 2, 11, 0, 37, 56, 34761),
+ 'updated_at': datetime.datetime(2024, 2, 11, 0, 37, 56, 35762)}"]
+```
+```
+(hbnb) show BaseModel 7fa29982-fe32-4dcc-aca5-35a4a249a517
+[BaseModel] (7fa29982-fe32-4dcc-aca5-35a4a249a517) {
+'id': '7fa29982-fe32-4dcc-aca5-35a4a249a517', 
+'created_at': datetime.datetime(2024, 2, 11, 0, 37, 56, 34761), 
+'updated_at': datetime.datetime(2024, 2, 11, 0, 37, 56, 35762)}
+```
+```
+(hbnb) update BaseModel 7fa29982-fe32-4dcc-aca5-35a4a249a517 first_name "jhin"
+(hbnb) show BaseModel 7fa29982-fe32-4dcc-aca5-35a4a249a517
+[BaseModel] (7fa29982-fe32-4dcc-aca5-35a4a249a517) {
+ 'id': '7fa29982-fe32-4dcc-aca5-35a4a249a517',
+ 'created_at': datetime.datetime(2024, 2, 11, 0, 37, 56, 34761),
+ 'updated_at': datetime.datetime(2024, 2, 11, 0, 42, 9, 309604), 
+ 'first_name': 'jhin'}
+```
+```
+(hbnb) destroy BaseModel 7fa29982-fe32-4dcc-aca5-35a4a249a517
+(hbnb) show BaseModel 7fa29982-fe32-4dcc-aca5-35a4a249a517
+** no instance found **
+```
+```
+(hbnb) quit {you closed the project}
+(hbnh) EOF {you closed the project}
+```
