@@ -28,12 +28,8 @@ class BaseModel:
         storage.save()  # made the storage implementation
 
     def to_dict(self):
-        dict_result = {}
-        for key, value in self.__dict__.items():
-            if key != '__class__':
-                if isinstance(value, datetime.datetime):
-                    dict_result[key] = value.isoformat()
-                else:
-                    dict_result[key] = value
-        dict_result['__class__'] = self.__class__.__name__
-        return dict_result
+        obj_dict = self.__dict__.copy()
+        obj_dict['__class__'] = type(self).__name__
+        obj_dict['created_at'] = self.created_at.isoformat()
+        obj_dict['updated_at'] = self.updated_at.isoformat()
+        return obj_dict
