@@ -9,6 +9,7 @@ from models.city import City
 from models.review import Review
 import shlex
 from models import storage
+from datetime import datetime
 
 
 class HBNBCommand(cmd.Cmd):
@@ -25,6 +26,17 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
     file_path = "file.json"
+
+    def analyze_parameter_value(self, value):
+        """
+        Analyzes the parameter value and returns the appropriate data type.
+        """
+        if value.isdigit():
+            return int(value)
+        try:
+            return float(value)
+        except ValueError:
+            return value
 
     def do_create(self, arg):
         """
@@ -119,79 +131,33 @@ class HBNBCommand(cmd.Cmd):
         instance = storage.all()[key]
         print(instance)
 
-    def do_update(self, arg):
-        """Updates an instance based on the class name and id."""
-        # split arg into a list taking into account the special characters
-        arguments_list = shlex.split(arg)
-
-        # checks if class name found
-        if len(arguments_list) == 0:
-            print("** class name missing **")
-            return
-
-        ClassName = arguments_list[0]
-
-        if ClassName not in HBNBCommand.classes:
+    def do_update(self, line):
+        """
+        Updates an instance based on the class name and id
+        by adding or updating attribute.
+        """
+        args = shlex.split(line)
+        args_size = len(args)
+        if args_size == 0:
+            print('** class name missing **')
+        elif args[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
-            return
-
-        if len(arguments_list) < 2:
-            """to check if at least the name
-            nof the class and it's id present"""
-            print("** instance id missing **")
-            return
-
-        instance_id = arguments_list[1]
-        key = "{}.{}".format(ClassName, instance_id)
-
-        if key not in storage.all():
-            print("** no instance found **")
-            return
-
-        instance = storage.all()[key]
-
-        # check if name of attribute is missing
-        if len(arguments_list) < 3:
-            print("** attribute name missing **")
-            return
-
-        att_name = arguments_list[2]
-
-        # check if attribute value is missing
-        if len(arguments_list) < 4:
-            print("** value missing **")
-            return
-
-        att_value_str = arguments_list[3]
-
-        # Get attribute value type and for instance
-        instance = storage.all()[key]
-        attrValueType = type(getattr(instance, att_name, None))
-
-        # cast attribute type
-        if attrValueType == str:
-            attrValue = att_value_str
-        elif attrValueType == int:
-            try:
-                attrValue = int(att_value_str)
-            except ValueError:
-                print("** invalid value for int attribute **")
-                return
-        elif attrValueType == float:
-            try:
-                attrValue = float(att_value_str)
-            except ValueError:
-                print("** invalid value for float attribute **")
-                return
+        elif args_size == 1:
+            print('** instance id missing **')
         else:
-            print("** invalid value for unknown attribute type **")
-            return
-
-        # update and save changes
-        setattr(instance, att_name, attrValue)
-        storage.save()
-
-        print("Updated successfully.")
+            key = args[0] + '.' + args[1]
+            inst_data = storage.all().get(key)
+            if inst_data is None:
+                print('** no instance found **')
+            elif args_size == 2:
+                print('** attribute name missing **')
+            elif args_size == 3:
+                print('** value missing **')
+            else:
+                args[3] = self.analyze_parameter_value(args[3])
+                setattr(inst_data, args[2], args[3])
+                setattr(inst_data, 'updated_at', datetime.now())
+                storage.save()
 
     def do_quit(self, arg):
         # update classes before exiting
