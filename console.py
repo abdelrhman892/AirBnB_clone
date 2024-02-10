@@ -133,7 +133,8 @@ class HBNBCommand(cmd.Cmd):
             return
 
         if len(arguments_list) < 2:
-            """to check if at least the name of the class and it's id present"""
+            """to check if at least the name
+            of the class and it's id present"""
             print("** instance id missing **")
             return
 
