@@ -67,7 +67,7 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
         else:
             print("** no instance found **")
-
+            
     # Prints all string representation of
     # all instances based or not on the class name
     def do_all(self, arg):
@@ -104,7 +104,7 @@ class HBNBCommand(cmd.Cmd):
         if len(arguments) < 2:
             print("** instance id missing **")
             return
-
+        
         instance_id = arguments[1]
         key = f"{ClassName}.{instance_id}"
 
@@ -176,9 +176,9 @@ class HBNBCommand(cmd.Cmd):
             except ValueError:
                 print("** invalid value **")
                 return
-        else:
-            print("** invalid value **")
-            return
+            else:
+                print("** invalid value **")
+                return
 
         # update and save changes
         setattr(instance, att_name, attrValue)
