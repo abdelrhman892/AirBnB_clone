@@ -38,6 +38,15 @@ class HBNBCommand(cmd.Cmd):
         except ValueError:
             return value
 
+    def analyze_instance_id(self, instance_id):
+        """
+        Analyze instance_id and returns the right one
+        """
+        try:
+            return int(instance_id)
+        except ValueError:
+            return instance_id
+
     def do_create(self, arg):
         """
         create: Creates a new instance of BaseModel.
@@ -57,33 +66,29 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, arg):
         """Deletes an instance based on the class name and id"""
-        arguments = arg.split()
+        words = arg.split()
 
-        if not arguments:
-            print("** class name missing **")
+        if len(words) >= 1:
+            command = words[0]
+        else:
+            print('** class name missing **')
             return
 
-        ClassName = arguments[0]
-
-        if ClassName not in HBNBCommand.classes:
-            print("** class doesn't exist **")
+        if len(words) >= 2:
+            instance_id = words[1]
+        else:
+            print('** instance id missing **')
             return
 
-        if len(arguments) < 2:
-            print("** instance id missing **")
-            return
+        key = f"{command}.{instance_id}"
+        inst_data = storage.all().get(key)
 
-        instance_id = arguments[1]
-        key = f"{ClassName} {instance_id}"
-
-        if key in storage.all():
+        if inst_data is None:
+            print('** no instance found **')
+        else:
             del storage.all()[key]
             storage.save()
-        else:
-            print("** no instance found **")
-            
-    # Prints all string representation of
-    # all instances based or not on the class name
+
     def do_all(self, arg):
         """Prints all string representation of all instances """
         if not arg:
@@ -142,64 +147,6 @@ class HBNBCommand(cmd.Cmd):
             print('** class name missing **')
         elif args[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
-<<<<<<< HEAD
-            return
-
-        if len(arguments_list) < 2:
-            """to check if at least the name of the class and it's id present"""
-            print("** instance id missing **")
-            return
-
-        instance_id = arguments_list[1]
-        key = f"{ClassName} {instance_id}"
-
-        if key not in storage.all():
-            print("** no instance found **")
-            return
-
-        # check if name of attribute is missing
-        if len(arguments_list) < 3:
-            print("** attribute name missing **")
-            return
-
-        att_name = arguments_list[3]
-
-        # check if attribute value is missing
-        if len(arguments_list) < 4:
-            print("** value missing **")
-            return
-
-        att_value_str = arguments_list[3]
-
-        # Get attribute value type and for instance
-        instance = storage.all()[key]
-        attrValueType = type(getattr(instance, att_name, None))
-
-        # cast attribute type
-        if attrValueType == str:
-            attrValue = att_value_str
-        elif attrValueType == int:
-            if att_value_str.isdigit():
-                attrValue = int(att_value_str)
-            else:
-                print("** invalid value **")
-                return
-        elif attrValueType == float:
-            try:
-                attrValue = float(att_value_str)
-            except ValueError:
-                print("** invalid value **")
-                return
-            else:
-                print("** invalid value **")
-                return
-
-        # update and save changes
-        setattr(instance, att_name, attrValue)
-        storage.save()
-
-        print("Updated successfully.")
-=======
         elif args_size == 1:
             print('** instance id missing **')
         else:
@@ -216,7 +163,6 @@ class HBNBCommand(cmd.Cmd):
                 setattr(inst_data, args[2], args[3])
                 setattr(inst_data, 'updated_at', datetime.now())
                 storage.save()
->>>>>>> Naira
 
     def do_quit(self, arg):
         # update classes before exiting
