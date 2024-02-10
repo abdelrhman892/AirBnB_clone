@@ -38,11 +38,9 @@ class HBNBCommand(cmd.Cmd):
         except ValueError:
             return value
 
+    # create: Creates a new instance of BaseModel.
+    # saves it (to the JSON file) and prints the id.
     def do_create(self, arg):
-        """
-        create: Creates a new instance of BaseModel.
-        saves it (to the JSON file) and prints the id.
-        """
         if not arg:
             print("** class name missing **")
             return
@@ -55,8 +53,8 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
+    # Deletes an instance based on the class name and id
     def do_destroy(self, arg):
-        """Deletes an instance based on the class name and id"""
         arguments = arg.split()
 
         if not arguments:
@@ -77,7 +75,7 @@ class HBNBCommand(cmd.Cmd):
         key = f"{ClassName} {instance_id}"
 
         if key in storage.all():
-            del storage.all()[key]
+            del storage().all()[key]
             storage.save()
         else:
             print("** no instance found **")
@@ -101,11 +99,9 @@ class HBNBCommand(cmd.Cmd):
                     if ClassName == key.split('.')[0]]
         print(instance)
 
+    # Prints the string representation of
+    # an instance based on the class name and id
     def do_show(self, arg):
-        """
-        Prints the string representation of
-        an instance based on the class name and id
-        """
         arguments = arg.split()
 
         if not arguments:
@@ -142,64 +138,6 @@ class HBNBCommand(cmd.Cmd):
             print('** class name missing **')
         elif args[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
-<<<<<<< HEAD
-            return
-
-        if len(arguments_list) < 2:
-            """to check if at least the name of the class and it's id present"""
-            print("** instance id missing **")
-            return
-
-        instance_id = arguments_list[1]
-        key = f"{ClassName} {instance_id}"
-
-        if key not in storage.all():
-            print("** no instance found **")
-            return
-
-        # check if name of attribute is missing
-        if len(arguments_list) < 3:
-            print("** attribute name missing **")
-            return
-
-        att_name = arguments_list[3]
-
-        # check if attribute value is missing
-        if len(arguments_list) < 4:
-            print("** value missing **")
-            return
-
-        att_value_str = arguments_list[3]
-
-        # Get attribute value type and for instance
-        instance = storage.all()[key]
-        attrValueType = type(getattr(instance, att_name, None))
-
-        # cast attribute type
-        if attrValueType == str:
-            attrValue = att_value_str
-        elif attrValueType == int:
-            if att_value_str.isdigit():
-                attrValue = int(att_value_str)
-            else:
-                print("** invalid value **")
-                return
-        elif attrValueType == float:
-            try:
-                attrValue = float(att_value_str)
-            except ValueError:
-                print("** invalid value **")
-                return
-            else:
-                print("** invalid value **")
-                return
-
-        # update and save changes
-        setattr(instance, att_name, attrValue)
-        storage.save()
-
-        print("Updated successfully.")
-=======
         elif args_size == 1:
             print('** instance id missing **')
         else:
@@ -216,7 +154,6 @@ class HBNBCommand(cmd.Cmd):
                 setattr(inst_data, args[2], args[3])
                 setattr(inst_data, 'updated_at', datetime.now())
                 storage.save()
->>>>>>> Naira
 
     def do_quit(self, arg):
         # update classes before exiting
@@ -226,7 +163,7 @@ class HBNBCommand(cmd.Cmd):
     def help_quit(self):
         print("Quit command to exit the program with formatting")
 
-    def do_EOF(self, arg):
+    def do_EOF(self):
         print("")
         # update classes before exiting
         storage.reload()
