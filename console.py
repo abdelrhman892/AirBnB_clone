@@ -169,6 +169,10 @@ class HBNBCommand(cmd.Cmd):
         storage.reload()
         return True
 
+    def emptyline(self):
+        """Do nothing upon receiving an empty line."""
+        pass
+
     def help_quit(self):
         print("Quit command to exit the program with formatting")
 
