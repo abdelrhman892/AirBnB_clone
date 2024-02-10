@@ -64,6 +64,9 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
+    def help_create(self):
+        print("create command to create new instance\n")
+
     def do_destroy(self, arg):
         """Deletes an instance based on the class name and id"""
         words = arg.split()
@@ -88,7 +91,10 @@ class HBNBCommand(cmd.Cmd):
         else:
             del storage.all()[key]
             storage.save()
-            
+
+    def help_destroy(self):
+        print("destroy command to delete specific instance\n")
+
     def do_all(self, arg):
         """Prints all string representation of all instances """
         if not arg:
@@ -105,6 +111,9 @@ class HBNBCommand(cmd.Cmd):
         instance = [str(obj) for key, obj in storage.all().items()
                     if ClassName == key.split('.')[0]]
         print(instance)
+
+    def help_all(self):
+        print("all command to display all instances\n")
 
     def do_show(self, arg):
         """
@@ -136,6 +145,9 @@ class HBNBCommand(cmd.Cmd):
         instance = storage.all()[key]
         print(instance)
 
+    def help_show(self):
+        print("show command to display info of instance\n")
+
     def do_update(self, line):
         """
         Updates an instance based on the class name and id
@@ -164,6 +176,9 @@ class HBNBCommand(cmd.Cmd):
                 setattr(inst_data, 'updated_at', datetime.now())
                 storage.save()
 
+    def help_update(self):
+        print("update command to update the instance\n")
+
     def do_quit(self, arg):
         # update classes before exiting
         storage.reload()
@@ -173,8 +188,11 @@ class HBNBCommand(cmd.Cmd):
         """Do nothing upon receiving an empty line."""
         pass
 
+    def help_emptyline(self):
+        print("emptyline command to do nothing when enter\n")
+
     def help_quit(self):
-        print("Quit command to exit the program with formatting")
+        print("Quit command to exit the program with formatting\n")
 
     def do_EOF(self, arg):
         print("")
@@ -183,7 +201,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def help_EOF(self):
-        print("Quit command to exit the program without formatting")
+        print("Quit command to exit the program without formatting\n")
 
 
 if __name__ == '__main__':
