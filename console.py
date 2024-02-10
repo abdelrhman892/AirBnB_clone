@@ -65,7 +65,7 @@ class HBNBCommand(cmd.Cmd):
         key = f"{ClassName} {instance_id}"
 
         if key in storage.all():
-            del storage().all()[key]
+            del storage.all()[key]
             storage.save()
         else:
             print("** no instance found **")
@@ -142,18 +142,20 @@ class HBNBCommand(cmd.Cmd):
             return
 
         instance_id = arguments_list[1]
-        key = f"{ClassName} {instance_id}"
+        key = "{}.{}".format(ClassName, instance_id)
 
         if key not in storage.all():
             print("** no instance found **")
             return
+
+        instance = storage.all()[key]
 
         # check if name of attribute is missing
         if len(arguments_list) < 3:
             print("** attribute name missing **")
             return
 
-        att_name = arguments_list[3]
+        att_name = arguments_list[2]
 
         # check if attribute value is missing
         if len(arguments_list) < 4:
@@ -170,19 +172,19 @@ class HBNBCommand(cmd.Cmd):
         if attrValueType == str:
             attrValue = att_value_str
         elif attrValueType == int:
-            if att_value_str.isdigit():
+            try:
                 attrValue = int(att_value_str)
-            else:
-                print("** invalid value **")
+            except ValueError:
+                print("** invalid value for int attribute **")
                 return
         elif attrValueType == float:
             try:
                 attrValue = float(att_value_str)
             except ValueError:
-                print("** invalid value **")
+                print("** invalid value for float attribute **")
                 return
         else:
-            print("** invalid value **")
+            print("** invalid value for unknown attribute type **")
             return
 
         # update and save changes
