@@ -27,9 +27,11 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     file_path = "file.json"
 
-    # create: Creates a new instance of BaseModel.
-    # saves it (to the JSON file) and prints the id.
     def do_create(self, arg):
+        """
+        create: Creates a new instance of BaseModel.
+        saves it (to the JSON file) and prints the id.
+        """
         if not arg:
             print("** class name missing **")
             return
@@ -42,8 +44,8 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
-    # Deletes an instance based on the class name and id
     def do_destroy(self, arg):
+        """Deletes an instance based on the class name and id"""
         arguments = arg.split()
 
         if not arguments:
@@ -88,9 +90,11 @@ class HBNBCommand(cmd.Cmd):
                     if ClassName == key.split('.')[0]]
         print(instance)
 
-    # Prints the string representation of
-    # an instance based on the class name and id
     def do_show(self, arg):
+        """
+        Prints the string representation of
+        an instance based on the class name and id
+        """
         arguments = arg.split()
 
         if not arguments:
@@ -134,7 +138,7 @@ class HBNBCommand(cmd.Cmd):
 
         if len(arguments_list) < 2:
             """to check if at least the name
-            of the class and it's id present"""
+            nof the class and it's id present"""
             print("** instance id missing **")
             return
 
