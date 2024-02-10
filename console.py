@@ -9,6 +9,7 @@ from models.city import City
 from models.review import Review
 import shlex
 from models import storage
+from datetime import datetime
 
 
 class HBNBCommand(cmd.Cmd):
@@ -26,9 +27,22 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     file_path = "file.json"
 
-    # create: Creates a new instance of BaseModel.
-    # saves it (to the JSON file) and prints the id.
+    def analyze_parameter_value(self, value):
+        """
+        Analyzes the parameter value and returns the appropriate data type.
+        """
+        if value.isdigit():
+            return int(value)
+        try:
+            return float(value)
+        except ValueError:
+            return value
+
     def do_create(self, arg):
+        """
+        create: Creates a new instance of BaseModel.
+        saves it (to the JSON file) and prints the id.
+        """
         if not arg:
             print("** class name missing **")
             return
@@ -41,8 +55,8 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
-    # Deletes an instance based on the class name and id
     def do_destroy(self, arg):
+        """Deletes an instance based on the class name and id"""
         arguments = arg.split()
 
         if not arguments:
@@ -63,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
         key = f"{ClassName} {instance_id}"
 
         if key in storage.all():
-            del storage().all()[key]
+            del storage.all()[key]
             storage.save()
         else:
             print("** no instance found **")
@@ -87,9 +101,11 @@ class HBNBCommand(cmd.Cmd):
                     if ClassName == key.split('.')[0]]
         print(instance)
 
-    # Prints the string representation of
-    # an instance based on the class name and id
     def do_show(self, arg):
+        """
+        Prints the string representation of
+        an instance based on the class name and id
+        """
         arguments = arg.split()
 
         if not arguments:
@@ -115,20 +131,18 @@ class HBNBCommand(cmd.Cmd):
         instance = storage.all()[key]
         print(instance)
 
-    def do_update(self, arg):
-        """Updates an instance based on the class name and id."""
-        # split arg into a list taking into account the special characters
-        arguments_list = shlex.split(arg)
-
-        # checks if class name found
-        if len(arguments_list) == 0:
-            print("** class name missing **")
-            return
-
-        ClassName = arguments_list[0]
-
-        if ClassName not in HBNBCommand.classes:
+    def do_update(self, line):
+        """
+        Updates an instance based on the class name and id
+        by adding or updating attribute.
+        """
+        args = shlex.split(line)
+        args_size = len(args)
+        if args_size == 0:
+            print('** class name missing **')
+        elif args[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
+<<<<<<< HEAD
             return
 
         if len(arguments_list) < 2:
@@ -185,6 +199,24 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
         print("Updated successfully.")
+=======
+        elif args_size == 1:
+            print('** instance id missing **')
+        else:
+            key = args[0] + '.' + args[1]
+            inst_data = storage.all().get(key)
+            if inst_data is None:
+                print('** no instance found **')
+            elif args_size == 2:
+                print('** attribute name missing **')
+            elif args_size == 3:
+                print('** value missing **')
+            else:
+                args[3] = self.analyze_parameter_value(args[3])
+                setattr(inst_data, args[2], args[3])
+                setattr(inst_data, 'updated_at', datetime.now())
+                storage.save()
+>>>>>>> Naira
 
     def do_quit(self, arg):
         # update classes before exiting
@@ -194,7 +226,7 @@ class HBNBCommand(cmd.Cmd):
     def help_quit(self):
         print("Quit command to exit the program with formatting")
 
-    def do_EOF(self):
+    def do_EOF(self, arg):
         print("")
         # update classes before exiting
         storage.reload()
