@@ -15,13 +15,13 @@ from datetime import datetime
 class HBNBCommand(cmd.Cmd):
     # classes variable to store
     classes = {
-            'BaseModel': BaseModel,
-            'User': User,
-            'City': City,
-            'Place': Place,
-            'Review': Review,
-            'State': State,
-            'Amenity': Amenity
+        'BaseModel': BaseModel,
+        'User': User,
+        'City': City,
+        'Place': Place,
+        'Review': Review,
+        'State': State,
+        'Amenity': Amenity
     }
 
     prompt = "(hbnb) "
@@ -88,7 +88,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             del storage.all()[key]
             storage.save()
-
+            
     def do_all(self, arg):
         """Prints all string representation of all instances """
         if not arg:
@@ -125,7 +125,7 @@ class HBNBCommand(cmd.Cmd):
         if len(arguments) < 2:
             print("** instance id missing **")
             return
-        
+
         instance_id = arguments[1]
         key = f"{ClassName}.{instance_id}"
 
