@@ -46,5 +46,5 @@ class FileStorage:
                     class_name = class_name.lower()  # Convert to lowercase
                     module_name = 'models.base_model'
                     module = __import__(module_name, fromlist=[class_name])
-                    cls = getattr(module, 'BaseModel')  # Import BaseModel directly
+                    cls = getattr(module, 'BaseModel')
                     self.__objects[key] = cls(**value)
