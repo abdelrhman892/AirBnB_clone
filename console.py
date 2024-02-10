@@ -199,7 +199,7 @@ class HBNBCommand(cmd.Cmd):
     def help_quit(self):
         print("Quit command to exit the program with formatting")
 
-    def do_EOF(self):
+    def do_EOF(self, arg):
         print("")
         # update classes before exiting
         storage.reload()
