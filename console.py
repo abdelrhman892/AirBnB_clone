@@ -196,7 +196,7 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
     def help_update(self):
-        """help command for update"""
+        """help command for update process"""
         print("update command to update an instance")
 
     def analyze_parameter_value(self, value, class_name, attribute_name):
