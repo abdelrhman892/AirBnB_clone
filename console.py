@@ -201,7 +201,7 @@ class HBNBCommand(cmd.Cmd):
 
     def analyze_parameter_value(self, value, class_name, attribute_name):
         """
-        Analyzes the parameter value and returns the appropriate data type.
+        Analyzes the parameter value and returns appropriate data type.
         """
         if class_name in HBNBCommand.classes and \
             attribute_name in HBNBCommand.classes[class_name]().__dict__:
