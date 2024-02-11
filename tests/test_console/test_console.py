@@ -1,65 +1,76 @@
 #!/usr/bin/python3
-"""
-Unit tests for console using Mock module from python standard library
-Checks console for capturing stdout into a StringIO object
-"""
-
-import os
-import sys
 import unittest
-from unittest.mock import create_autospec, patch
+from unittest.mock import patch
 from io import StringIO
+import sys
 from console import HBNBCommand
-from models import storage
-from models.base_model import BaseModel
-from models.user import User
-from models.state import State
-from models.city import City
-from models.amenity import Amenity
-from models.place import Place
-from models.review import Review
 
 
 class TestConsole(unittest.TestCase):
-    """
-    Unittest for the console model
-    """
-
+    """Test console"""
     def setUp(self):
-        """Redirecting stdin and stdout"""
-        self.mock_stdin = create_autospec(sys.stdin)
-        self.mock_stdout = create_autospec(sys.stdout)
-        self.err = ["** class name missing **",
-                    "** class doesn't exist **",
-                    "** instance id missing **",
-                    "** no instance found **",
-                    ]
+        self.console = HBNBCommand()
 
-        self.cls = ["BaseModel",
-                    "User",
-                    "State",
-                    "City",
-                    "Place",
-                    "Amenity",
-                    "Review"]
+    def tearDown(self):
+        pass
 
-    def create(self, server=None):
+    @staticmethod
+    def capture_output(func, *args, **kwargs):
         """
-        Redirects stdin and stdout to the mock module
+        Helper function to capture output of a method
         """
-        return HBNBCommand(stdin=self.mock_stdin, stdout=self.mock_stdout)
-
-    def last_write(self, nr=None):
-        """Returns last n output lines"""
-        if nr is None:
-            return self.mock_stdout.write.call_args[0][0]
-        return "".join(map(lambda c: c[0][0],
-                           self.mock_stdout.write.call_args_list[-nr:]))
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        try:
+            func(*args, **kwargs)
+            return captured_output.getvalue().strip()
+        finally:
+            sys.stdout = sys.__stdout__
 
     def test_quit(self):
-        """Quit command"""
-        cli = self.create()
-        self.assertTrue(cli.onecmd("quit"))
+        with patch('builtins.input', return_value="quit"):
+            self.assertTrue(self.console.onecmd("quit"))
+
+    def test_EOF(self):
+        with patch('builtins.input', return_value="EOF"):
+            self.assertTrue(self.console.onecmd("EOF"))
+
+    def test_create(self):
+        output = self.capture_output(self.console.onecmd, "create")
+        self.assertIn("** class name missing **", output)
+
+        output = self.capture_output(self.console.onecmd, "create UnknownClass")
+        self.assertIn("** class doesn't exist **", output)
+
+        output = self.capture_output(self.console.onecmd, "create BaseModel")
+        self.assertGreater(len(output), 0)  # Check if the instance ID is present
+        self.assertIn("BaseModel", output)
+
+    def test_show(self):
+        with patch('builtins.input', return_value="show BaseModel.123"):
+            output = self.capture_output(self.console.onecmd, "show BaseModel.123")
+            self.assertIn("** instance id missing **", output)
+
+    def test_destroy(self):
+        with patch('builtins.input', return_value="destroy BaseModel.123"):
+            output = self.capture_output(self.console.onecmd, "destroy BaseModel.123")
+            self.assertIn("** instance id missing **", output)
+
+    def test_all(self):
+        # Check when no class name is provided
+        output = self.capture_output(self.console.onecmd, "all")
+        self.assertIn("Objects:", output)
+
+        output = self.capture_output(self.console.onecmd, "all UnknownClass")
+        self.assertIn("** class doesn't exist **", output)
+
+        output = self.capture_output(self.console.onecmd, "all BaseModel")
+        self.assertGreater(len(output), 0)  # Check if there's at least one instance
+
+    def test_update(self):
+        with patch('builtins.input', return_value="update BaseModel"):
+            output = self.capture_output(self.console.onecmd, "update BaseModel")
+            self.assertIn("** instance id missing **", output)
 
 
 if __name__ == '__main__':

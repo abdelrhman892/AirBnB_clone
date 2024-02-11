@@ -8,6 +8,8 @@ class FileStorage:
     __objects = {}
 
     def all(self):
+        if not self.__objects:
+            return {}
         return self.__objects
 
     def new(self, obj):
