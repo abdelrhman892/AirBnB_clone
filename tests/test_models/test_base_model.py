@@ -82,8 +82,10 @@ class TestBaseModel(unittest.TestCase):
 
         # Check if values are formatted correctly
         self.assertEqual(obj_dict['__class__'], 'BaseModel')
-        self.assertEqual(obj_dict['created_at'], obj.created_at.strftime('%Y-%m-%dT%H:%M:%S.%f'))
-        self.assertEqual(obj_dict['updated_at'], obj.updated_at.strftime('%Y-%m-%dT%H:%M:%S.%f'))
+        self.assertEqual(obj_dict['created_at'],
+                         obj.created_at.strftime('%Y-%m-%dT%H:%M:%S.%f'))
+        self.assertEqual(obj_dict['updated_at'],
+                         obj.updated_at.strftime('%Y-%m-%dT%H:%M:%S.%f'))
 
 
 if __name__ == '__main__':
