@@ -16,11 +16,11 @@
 
     1. Clone this repository to your local machine.
     2. Navigate to the project directory.
-    3. Run the command `python airbnb_cli.py` to start the command interpreter.
+    3. Run the file "console.py" to start the command interpreter.
 ## How to Use
     Once the command interpreter is running,
     you can use various commands to interact with Airbnb listings.
-    The prompt  will be ```(hbnb)```.
+    The prompt  will be (hbnb).
     Here are some of the basic commands:
 
 | Commands      | How to use                                                                                                                                 |
