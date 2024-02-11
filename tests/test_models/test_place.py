@@ -36,6 +36,13 @@ class TestPlace(unittest.TestCase):
         place = Place()
         self.assertTrue(hasattr(place, 'number_rooms'))
 
+    def test_review_to_dict(self):
+        place = Place()
+        place_dict = place.to_dict()
+        expected_keys = ['__class__', 'id', 'created_at', 'updated_at']
+        self.assertEqual(sorted(place_dict.keys()), sorted(expected_keys))
+        self.assertEqual(place_dict['__class__'], 'Place')
+
 
 if __name__ == '__main__':
     unittest.main()
