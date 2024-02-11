@@ -1,10 +1,4 @@
 #!/usr/bin/python3
-"""Console Module
-This module controls all databases.
-Can create, modify and delete instances.
-"""
-
-
 import cmd
 from models.base_model import BaseModel
 from models.user import User
@@ -19,7 +13,6 @@ import shlex
 
 
 class HBNBCommand(cmd.Cmd):
-     """command processor class."""
     prompt = "(hbnb) "
     classes = {
         'BaseModel': BaseModel,
@@ -32,11 +25,6 @@ class HBNBCommand(cmd.Cmd):
     }
 
     def emptyline(self):
-        """
-        When an empty line is entered in response to the prompt,
-        it won't repeat the last nonempty command entered.
-
-        """
         pass
 
     def do_quit(self, line):
@@ -52,11 +40,9 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def help_quit(self):
-        """help command for quit"""
         print("Quit command to exit the program")
 
     def help_EOF(self):
-        """help command for EOF"""
         print("EOF command to exit the program")
 
     def do_create(self, line):
@@ -76,7 +62,6 @@ class HBNBCommand(cmd.Cmd):
         print(new_instance.id)
 
     def help_create(self):
-        """help command for create"""
         print("create command to create a new instance")
 
     def do_show(self, line):
@@ -103,7 +88,6 @@ class HBNBCommand(cmd.Cmd):
         print(instance)
 
     def help_show(self):
-        """help command for show"""
         print("show command to display an instance")
 
     def do_destroy(self, line):
@@ -130,7 +114,6 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
     def help_destroy(self):
-        """help command for destroy"""
         print("destroy command to delete an instance")
 
     def do_all(self, line):
@@ -151,7 +134,6 @@ class HBNBCommand(cmd.Cmd):
         print(instances)
 
     def help_all(self):
-        """help command for all"""
         print("all command to display all instances")
 
     def do_update(self, line):
@@ -196,12 +178,11 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
     def help_update(self):
-        """help command for update"""
         print("update command to update an instance")
 
     def analyze_parameter_value(self, value, class_name, attribute_name):
         """
-        Analyzes the parameter value and returns appropriate data type.
+        Analyzes the parameter value and returns the appropriate data type.
         """
         if class_name in HBNBCommand.classes and \
             attribute_name in HBNBCommand.classes[class_name]().__dict__:
@@ -217,4 +198,3 @@ class HBNBCommand(cmd.Cmd):
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
-
