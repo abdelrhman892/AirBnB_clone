@@ -16,6 +16,13 @@ class TestCity(unittest.TestCase):
         city = City()
         self.assertTrue(hasattr(city, 'state_id'))
 
+    def test_city_to_dict(self):
+        city = City()
+        city_dict = city.to_dict()
+        expected_keys = ['__class__', 'id', 'created_at', 'updated_at']
+        self.assertEqual(sorted(city_dict.keys()), sorted(expected_keys))
+        self.assertEqual(city_dict['__class__'], 'City')
+
 
 if __name__ == '__main__':
     unittest.main()
