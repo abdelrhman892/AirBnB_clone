@@ -7,13 +7,13 @@ from models.place import Place
 from models.state import State
 from models.city import City
 from models.review import Review
-import shlex
 from models import storage
 from datetime import datetime
+import shlex
 
 
 class HBNBCommand(cmd.Cmd):
-    # classes variable to store
+    prompt = "(hbnb) "
     classes = {
         'BaseModel': BaseModel,
         'User': User,
@@ -24,185 +24,178 @@ class HBNBCommand(cmd.Cmd):
         'Amenity': Amenity
     }
 
-    prompt = "(hbnb) "
-    file_path = "file.json"
+    def emptyline(self):
+        pass
 
-    def analyze_parameter_value(self, value):
+    def do_quit(self, line):
         """
-        Analyzes the parameter value and returns the appropriate data type.
+        Quit command to exit the program
         """
-        if value.isdigit():
-            return int(value)
-        try:
-            return float(value)
-        except ValueError:
-            return value
+        return True
 
-    def analyze_instance_id(self, instance_id):
+    def do_EOF(self, line):
         """
-        Analyze instance_id and returns the right one
+        EOF command to exit the program
         """
-        try:
-            return int(instance_id)
-        except ValueError:
-            return instance_id
+        return True
 
-    def do_create(self, arg):
+    def help_quit(self):
+        print("Quit command to exit the program")
+
+    def help_EOF(self):
+        print("EOF command to exit the program")
+
+    def do_create(self, line):
         """
-        create: Creates a new instance of BaseModel.
-        saves it (to the JSON file) and returns the id.
+        Create command to create a new instance
         """
-        if not arg:
-            return ["** class name missing **"]
-
-        ClassName = arg.split()[0]
-
-        if ClassName in HBNBCommand.classes:
-            new_instance = HBNBCommand.classes[ClassName]()
-            new_instance.save()
-            return [new_instance.id]
-        else:
-            return ["** class doesn't exist **"]
-
-    def help_create(self):
-        print("create command to create new instance\n")
-
-    def do_destroy(self, arg):
-        """Deletes an instance based on the class name and id"""
-        words = arg.split()
-
-        if len(words) >= 1:
-            command = words[0]
-        else:
-            print('** class name missing **')
-            return
-
-        if len(words) >= 2:
-            instance_id = words[1]
-        else:
-            print('** instance id missing **')
-            return
-
-        key = f"{command}.{instance_id}"
-        inst_data = storage.all().get(key)
-
-        if inst_data is None:
-            print('** no instance found **')
-        else:
-            del storage.all()[key]
-            storage.save()
-
-    def help_destroy(self):
-        print("destroy command to delete specific instance\n")
-
-    def do_all(self, arg):
-        """Prints all string representation of all instances """
-        if not arg:
-            instance = [str(obj) for obj in storage.all().values()]
-            print(instance)
-            return
-
-        ClassName = arg.split()[0]
-
-        if ClassName not in HBNBCommand.classes:
-            print("** class doesn't exist **")
-            return
-
-        instance = [str(obj) for key, obj in storage.all().items()
-                    if ClassName == key.split('.')[0]]
-        print(instance)
-
-    def help_all(self):
-        print("all command to display all instances\n")
-
-    def do_show(self, arg):
-        """
-        Prints the string representation of
-        an instance based on the class name and id
-        """
-        arguments = arg.split()
-
-        if not arguments:
+        if not line:
             print("** class name missing **")
             return
-
-        ClassName = arguments[0]
-        if ClassName not in HBNBCommand.classes:
+        args = shlex.split(line)
+        class_name = args[0]
+        if class_name not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
+        new_instance = HBNBCommand.classes[class_name]()
+        new_instance.save()
+        print(new_instance.id)
 
-        if len(arguments) < 2:
+    def help_create(self):
+        print("create command to create a new instance")
+
+    def do_show(self, line):
+        """
+        Show command to display an instance
+        """
+        if not line:
+            print("** class name missing **")
+            return
+        args = shlex.split(line)
+        class_name = args[0]
+        if class_name not in HBNBCommand.classes:
+            print("** class doesn't exist **")
+            return
+        if len(args) < 2:
             print("** instance id missing **")
             return
-
-        instance_id = arguments[1]
-        key = f"{ClassName}.{instance_id}"
-
+        instance_id = args[1]
+        key = f"{class_name}.{instance_id}"
         if key not in storage.all():
             print("** no instance found **")
             return
-
         instance = storage.all()[key]
         print(instance)
 
     def help_show(self):
-        print("show command to display info of instance\n")
+        print("show command to display an instance")
+
+    def do_destroy(self, line):
+        """
+        Destroy command to delete an instance
+        """
+        if not line:
+            print("** class name missing **")
+            return
+        args = shlex.split(line)
+        class_name = args[0]
+        if class_name not in HBNBCommand.classes:
+            print("** class doesn't exist **")
+            return
+        if len(args) < 2:
+            print("** instance id missing **")
+            return
+        instance_id = args[1]
+        key = f"{class_name}.{instance_id}"
+        if key not in storage.all():
+            print("** no instance found **")
+            return
+        del storage.all()[key]
+        storage.save()
+
+    def help_destroy(self):
+        print("destroy command to delete an instance")
+
+    def do_all(self, line):
+        """
+        All command to display all instances
+        """
+        if not line:
+            instances = [str(obj) for obj in storage.all().values()]
+            print(instances)
+            return
+        args = shlex.split(line)
+        class_name = args[0]
+        if class_name not in HBNBCommand.classes:
+            print("** class doesn't exist **")
+            return
+        instances = [str(obj) for key, obj in storage.all().items()
+                     if class_name == key.split('.')[0]]
+        print(instances)
+
+    def help_all(self):
+        print("all command to display all instances")
 
     def do_update(self, line):
         """
-        Updates an instance based on the class name and id
-        by adding or updating attribute.
+        Update command to update an instance
         """
         args = shlex.split(line)
-        args_size = len(args)
-        if args_size == 0:
+        if not args:
             print('** class name missing **')
-        elif args[0] not in HBNBCommand.classes:
+            return
+
+        class_name = args[0]
+
+        if class_name not in HBNBCommand.classes:
             print("** class doesn't exist **")
-        elif args_size == 1:
+            return
+
+        if len(args) < 2:
             print('** instance id missing **')
-        else:
-            key = args[0] + '.' + args[1]
-            inst_data = storage.all().get(key)
-            if inst_data is None:
-                print('** no instance found **')
-            elif args_size == 2:
-                print('** attribute name missing **')
-            elif args_size == 3:
-                print('** value missing **')
-            else:
-                args[3] = self.analyze_parameter_value(args[3])
-                setattr(inst_data, args[2], args[3])
-                setattr(inst_data, 'updated_at', datetime.now())
-                storage.save()
+            return
+
+        instance_id = args[1]
+        key = f"{class_name}.{instance_id}"
+
+        if key not in storage.all():
+            print('** no instance found **')
+            return
+
+        if len(args) < 3:
+            print('** attribute name missing **')
+            return
+
+        attribute_name = args[2]
+
+        if len(args) < 4:
+            print('** value missing **')
+            return
+
+        attribute_value = self.analyze_parameter_value(args[3], class_name, attribute_name)
+        setattr(storage.all()[key], attribute_name, attribute_value)
+        setattr(storage.all()[key], 'updated_at', datetime.now())
+        storage.save()
 
     def help_update(self):
-        print("update command to update the instance\n")
+        print("update command to update an instance")
 
-    def do_quit(self, arg):
-        # update classes before exiting
-        storage.reload()
-        return True
-
-    def emptyline(self):
-        """Do nothing upon receiving an empty line."""
-        pass
-
-    def help_emptyline(self):
-        print("emptyline command to do nothing when enter\n")
-
-    def help_quit(self):
-        print("Quit command to exit the program with formatting\n")
-
-    def do_EOF(self, arg):
-        print("")
-        # update classes before exiting
-        storage.reload()
-        return True
-
-    def help_EOF(self):
-        print("Quit command to exit the program without formatting\n")
+    def analyze_parameter_value(self, value, class_name, attribute_name):
+        """
+        Analyzes the parameter value and returns the appropriate data type.
+        """
+        if class_name in HBNBCommand.classes and \
+            attribute_name in HBNBCommand.classes[class_name]().__dict__:
+                attribute_type = type(HBNBCommand.classes[class_name]().__dict__[attribute_name])
+                if attribute_type == int:
+                    return int(value)
+                elif attribute_type == float:
+                    return float(value)
+                else:
+                    return value
+        return value
 
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
+
