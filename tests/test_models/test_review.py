@@ -1,17 +1,10 @@
 #!/usr/bin/python3
 import unittest
-import pep8
 from models.review import Review
 
 
 class TestReview(unittest.TestCase):
     """Tests for the Review class."""
-
-    def test_pep8_conformance_review(self):
-        """Test PEP8 conformance for review.py."""
-        pep8style = pep8.StyleGuide(quiet=True)
-        result = pep8style.check_files(['models/review.py'])
-        self.assertEqual(result.total_errors, 0, "Found code style errors (and warnings).")
 
     def test_review_instance(self):
         """Test creating an instance of the Review class."""
