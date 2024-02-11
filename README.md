@@ -23,17 +23,16 @@
     The prompt  will be ```(hbnb)```.
     Here are some of the basic commands:
 
-| Commands  | How to use |
-| ------------- | ------------- |
-| ```quit```  | Quits the console  |
-| ```Ctrl+D```  | Quits the console `EOF`  |
-| ```help```  | ```help <command>``` Displays all commands or Displays instructions for a specific command
-| ```create```  | ```create <class_name>``` Creates an object of type , saves it to a JSON file, and prints the objects ID
-| ```show```  |```show <class_name> <id>``` Shows string representation of an object
-| ```destroy```  | ```destroy <class> <ID>``` Deletes an objects
-| ```all```  | ```all <class>``` Prints all string representations of all objects or Prints all string representations of all objects of a specific class
-| ```update```  | ```update <class> <id> <attribute name> "<attribute value>"``` Updates an object with a certain attribute (new or existing)
-
+| Commands      | How to use                                                                                                                                 |
+|---------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| ```quit```    | Quits the console                                                                                                                          |
+| ```Ctrl+D```  | Quits the console `EOF`                                                                                                                    |
+| ```help```    | ```help <command>``` Displays all commands or Displays instructions for a specific command                                                 |
+| ```create```  | ```create <class_name>``` Creates an object of type , saves it to a JSON file, and prints the objects ID                                   |
+| ```show```    | ```show <class_name> <id>``` Shows string representation of an object                                                                      |
+| ```destroy``` | ```destroy <class> <ID>``` Deletes an objects                                                                                              |
+| ```all```     | ```all <class>``` Prints all string representations of all objects or Prints all string representations of all objects of a specific class |
+| ```update```  | ```update <class> <id> <attribute name> "<attribute value>"``` Updates an object with a certain attribute (new or existing)                |
 
 ## examples 
     

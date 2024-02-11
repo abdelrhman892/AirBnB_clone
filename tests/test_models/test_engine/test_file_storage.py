@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import unittest
-import json
 import os
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
@@ -29,7 +28,7 @@ class TestFileStorage(unittest.TestCase):
         # Test if all() returns an empty dictionary initially
         result = self.storage.all()
 
-        print("Actual result: ", result)
+        print("Actual result-> ", result)
         self.assertEqual(result, {})
 
     def test_new(self):
