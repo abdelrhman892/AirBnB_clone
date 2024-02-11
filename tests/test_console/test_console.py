@@ -39,21 +39,25 @@ class TestConsole(unittest.TestCase):
         output = self.capture_output(self.console.onecmd, "create")
         self.assertIn("** class name missing **", output)
 
-        output = self.capture_output(self.console.onecmd, "create UnknownClass")
+        output = self.capture_output(self.console.onecmd,
+                                     "create UnknownClass")
         self.assertIn("** class doesn't exist **", output)
 
         output = self.capture_output(self.console.onecmd, "create BaseModel")
-        self.assertGreater(len(output), 0)  # Check if the instance ID is present
+        # Checks if instance ID present
+        self.assertGreater(len(output), 0)
         self.assertIn("BaseModel", output)
 
     def test_show(self):
         with patch('builtins.input', return_value="show BaseModel.123"):
-            output = self.capture_output(self.console.onecmd, "show BaseModel.123")
+            output = self.capture_output(self.console.onecmd,
+                                         "show BaseModel.123")
             self.assertIn("** instance id missing **", output)
 
     def test_destroy(self):
         with patch('builtins.input', return_value="destroy BaseModel.123"):
-            output = self.capture_output(self.console.onecmd, "destroy BaseModel.123")
+            output = self.capture_output(self.console.onecmd,
+                                         "destroy BaseModel.123")
             self.assertIn("** instance id missing **", output)
 
     def test_all(self):
@@ -65,11 +69,12 @@ class TestConsole(unittest.TestCase):
         self.assertIn("** class doesn't exist **", output)
 
         output = self.capture_output(self.console.onecmd, "all BaseModel")
-        self.assertGreater(len(output), 0)  # Check if there's at least one instance
+        self.assertGreater(len(output), 0)
 
     def test_update(self):
         with patch('builtins.input', return_value="update BaseModel"):
-            output = self.capture_output(self.console.onecmd, "update BaseModel")
+            output = self.capture_output(self.console.onecmd,
+                                         "update BaseModel")
             self.assertIn("** instance id missing **", output)
 
 
