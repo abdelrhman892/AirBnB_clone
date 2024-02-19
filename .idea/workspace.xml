@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e736227b-6810-4632-bfcf-b92ec2fab69d" name="Changes" comment="Head styling" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="Python Unit Test" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2cEeooVgsR5k0P7jTNNvW7R8sRL" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Python tests.Python tests for test_base_model.TestBaseModel.testInitWithArguments.executor": "Run",
+    "Python tests.Python tests for test_base_model.TestBaseModel.testInitWithoutArguments.executor": "Run",
+    "Python tests.Python tests for test_base_model.TestBaseModel.test___init___with_arguments.executor": "Run",
+    "Python tests.Python tests for test_base_model.TestBaseModel.test___init___with_invalid_datetime_format.executor": "Run",
+    "Python tests.Python tests for test_base_model.TestBaseModel.test___init___without_arguments_values.executor": "Run",
+    "Python tests.Python tests for test_base_model.TestBaseModel.test___str__.executor": "Run",
+    "Python tests.Python tests for test_base_model.TestBaseModel.test___str___method.executor": "Run",
+    "Python tests.Python tests for test_base_model.TestBaseModel.test_basic_attributes.executor": "Run",
+    "Python tests.Python tests for test_base_model.TestBaseModel.test_datetime_format.executor": "Run",
+    "Python tests.Python tests for test_base_model.TestBaseModel.test_init_with_invalid_datetime_format.executor": "Run",
+    "Python tests.Python tests for test_base_model.TestBaseModel.test_init_without_arguments_values.executor": "Run",
+    "Python tests.Python tests for test_base_model.TestBaseModel.test_save.executor": "Run",
+    "Python tests.Python tests for test_base_model.TestBaseModel.test_to_dict_method.executor": "Run",
+    "Python tests.Python tests for test_file_storage.MyTestCase.test_all_returns_all_objects.executor": "Debug",
+    "Python tests.Python tests for test_file_storage.MyTestCase.test_all_returns_empty_dict_if_no_objects.executor": "Run",
+    "Python tests.Python tests for test_file_storage.MyTestCase.test_new_adds_object_to_objects.executor": "Run",
+    "Python tests.Python tests for test_file_storage.MyTestCase.test_save_serializes_objects_correctly.executor": "Run",
+    "Python tests.Python tests for test_pep8.TestPEP8.test_pep8_conformance.executor": "Run",
+    "Python tests.Python tests for test_pep8.TestPEP8.test_pep8_conformance_amenity.executor": "Run",
+    "Python tests.Python tests for test_place.TestPlace.test_pep8_conformance_place.executor": "Run",
+    "Python tests.Python tests for test_place.TestPlace.test_review_to_dict.executor": "Run",
+    "Python tests.Python tests for test_review.TestReview.test_review_creation.executor": "Run",
+    "Python tests.Python tests for test_review.TestReview.test_review_to_dict.executor": "Run",
+    "Python tests.Python tests for test_state.TestState.test_state_to_dict.executor": "Run",
+    "Python tests.Python tests for test_user.TestUser.test_user_attributes.executor": "Run",
+    "Python tests.Python tests for test_user.TestUser.test_user_to_dict.executor": "Run",
+    "Python tests.Python tests in test_amenity.py.executor": "Run",
+    "Python tests.Python tests in test_base_model.py.executor": "Run",
+    "Python tests.Python tests in test_city.py.executor": "Run",
+    "Python tests.Python tests in test_console.py.executor": "Run",
+    "Python tests.Python tests in test_file_storage.py.executor": "Run",
+    "Python tests.Python tests in test_pep8.py.executor": "Run",
+    "Python tests.Python tests in test_pep8_checks.py.executor": "Run",
+    "Python tests.Python tests in test_place.py.executor": "Run",
+    "Python tests.Python tests in test_review.py.executor": "Run",
+    "Python tests.Python tests in test_state.py.executor": "Run",
+    "Python tests.Python tests in test_user.py.executor": "Run",
+    "Python.console.executor": "Run",
+    "Python.test_save_reload_base_model.executor": "Run",
+    "Python.test_save_reload_user.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "abdelrhman",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projects\GitHub\AirBnB_clone\tests\test_console" />
+      <recent name="D:\projects\GitHub\AirBnB_clone\tests" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python tests.Python tests in test_pep8.py">
+    <configuration name="Python tests for test_pep8.TestPEP8.test_pep8_conformance" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="AirBnB_clone" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_pep8.TestPEP8.test_pep8_conformance&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_pep8.TestPEP8.test_pep8_conformance_amenity" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="AirBnB_clone" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_pep8.TestPEP8.test_pep8_conformance_amenity&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests in test_amenity.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="AirBnB_clone" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/test_models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/test_models/test_amenity.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests in test_city.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="AirBnB_clone" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/test_models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/test_models/test_city.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests in test_pep8.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="AirBnB_clone" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/test_pep8.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.Python tests in test_pep8.py" />
+        <item itemvalue="Python tests.Python tests in test_city.py" />
+        <item itemvalue="Python tests.Python tests in test_amenity.py" />
+        <item itemvalue="Python tests.Python tests for test_pep8.TestPEP8.test_pep8_conformance_amenity" />
+        <item itemvalue="Python tests.Python tests for test_pep8.TestPEP8.test_pep8_conformance" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-50da183f06c8-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13135.95" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task id="LOCAL-00001" summary="fixing">
+      <option name="closed" value="true" />
+      <created>1707582570684</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1707582570684</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fixing">
+      <option name="closed" value="true" />
+      <created>1707582880089</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1707582880089</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fixing some errors">
+      <option name="closed" value="true" />
+      <created>1707583278273</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1707583278273</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fixing some errors">
+      <option name="closed" value="true" />
+      <created>1707583413121</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1707583413121</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fixing some errors">
+      <option name="closed" value="true" />
+      <created>1707585842154</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1707585842154</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fixing some errors">
+      <option name="closed" value="true" />
+      <created>1707585930597</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1707585930597</updated>
+    </task>
+    <task id="LOCAL-00007" summary="test for BaseModel">
+      <option name="closed" value="true" />
+      <created>1707600715207</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1707600715207</updated>
+    </task>
+    <task id="LOCAL-00008" summary="adding some texts in README.md">
+      <option name="closed" value="true" />
+      <created>1707605568311</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1707605568312</updated>
+    </task>
+    <task id="LOCAL-00009" summary="fixing some codestyle">
+      <option name="closed" value="true" />
+      <created>1707606239734</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1707606239734</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e736227b-6810-4632-bfcf-b92ec2fab69d" name="Changes" comment="fixing some codestyle" />
+      <created>1707681372684</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1707681372684</updated>
+      <workItem from="1707681384828" duration="7272000" />
+      <workItem from="1707691554474" duration="64000" />
+      <workItem from="1707692210604" duration="346000" />
+      <workItem from="1707838900653" duration="69000" />
+      <workItem from="1708013510695" duration="2796000" />
+    </task>
+    <task id="LOCAL-00010" summary="fixing some errors in testing">
+      <option name="closed" value="true" />
+      <created>1707685986349</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1707685986349</updated>
+    </task>
+    <task id="LOCAL-00011" summary="adding some tests">
+      <option name="closed" value="true" />
+      <created>1707688853093</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1707688853093</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Inline styling">
+      <option name="closed" value="true" />
+      <created>1708015068387</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1708015068387</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Head styling">
+      <option name="closed" value="true" />
+      <created>1708015704994</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1708015704994</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Head styling">
+      <option name="closed" value="true" />
+      <created>1708015726388</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1708015726388</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fixing" />
+    <MESSAGE value="fixing some errors" />
+    <MESSAGE value="test for BaseModel" />
+    <MESSAGE value="adding some texts in README.md" />
+    <MESSAGE value="fixing some codestyle" />
+    <MESSAGE value="fixing some errors in testing" />
+    <MESSAGE value="adding some tests" />
+    <MESSAGE value="Inline styling" />
+    <MESSAGE value="Head styling" />
+    <option name="LAST_COMMIT_MESSAGE" value="Head styling" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/AirBnB_clone$console.coverage" NAME="console Coverage Results" MODIFIED="1708013659752" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AirBnB_clone$test_save_reload_base_model.coverage" NAME="test_save_reload_base_model Coverage Results" MODIFIED="1707583136527" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
+    <SUITE FILE_PATH="coverage/AirBnB_clone$test_save_reload_user.coverage" NAME="test_save_reload_user Coverage Results" MODIFIED="1707685894462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AirBnB_clone$.coverage" NAME=" Coverage Results" MODIFIED="1707689730685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+  </component>
+</project>

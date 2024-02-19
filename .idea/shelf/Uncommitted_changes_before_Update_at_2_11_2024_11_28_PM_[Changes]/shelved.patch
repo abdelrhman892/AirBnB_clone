@@ -1,0 +1,74 @@
+Index: tests/test_models/test_state.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#!/usr/bin/python3\r\nimport unittest\r\nfrom models.state import State\r\n\r\n\r\nclass TestState(unittest.TestCase):\r\n    \"\"\"Test the state file\"\"\"\r\n\r\n    def test_state_instance(self):\r\n        \"\"\"Test creating an instance of the State class.\"\"\"\r\n        state = State()\r\n        self.assertIsInstance(state, State)\r\n\r\n    def test_state_attribute_name(self):\r\n        \"\"\"Test State class 'name' attribute.\"\"\"\r\n        state = State()\r\n        self.assertTrue(hasattr(state, 'name'))\r\n\r\n\r\nif __name__ == '__main__':\r\n    unittest.main()\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/tests/test_models/test_state.py b/tests/test_models/test_state.py
+--- a/tests/test_models/test_state.py	(revision c851efe5d54820709b034c6bc7c2bf1aa82e7603)
++++ b/tests/test_models/test_state.py	(date 1707686746745)
+@@ -14,7 +14,18 @@
+     def test_state_attribute_name(self):
+         """Test State class 'name' attribute."""
+         state = State()
+-        self.assertTrue(hasattr(state, 'name'))
++        self.assertIsInstance(state, State)
++        self.assertTrue(hasattr(state, 'id'))
++        self.assertTrue(hasattr(state, 'created_at'))
++        self.assertTrue(hasattr(state, 'updated_at'))
++        self.assertEqual(state.name, "")
++
++    def test_state_to_dict(self):
++        state = State()
++        state_dict = state.to_dict()
++        expected_keys = ['__class__', 'id', 'created_at', 'updated_at', 'name']
++        self.assertEqual(sorted(state_dict.keys()), sorted(expected_keys))
++        self.assertEqual(state_dict['__class__'], 'State')
+ 
+ 
+ if __name__ == '__main__':
+Index: tests/test_models/test_user.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#!/usr/bin/python3\r\nimport unittest\r\nfrom models.user import User\r\n\r\n\r\nclass TestUser(unittest.TestCase):\r\n    \"\"\"Test for the User class\"\"\"\r\n\r\n    def test_user_instance(self):\r\n        \"\"\"Test creating an instance of the User class.\"\"\"\r\n        user = User()\r\n        self.assertIsInstance(user, User)\r\n\r\n    def test_user_attributes(self):\r\n        \"\"\"Test User class attributes.\"\"\"\r\n        user = User()\r\n        self.assertTrue(hasattr(user, 'email'))\r\n        self.assertTrue(hasattr(user, 'password'))\r\n        self.assertTrue(hasattr(user, 'first_name'))\r\n        self.assertTrue(hasattr(user, 'last_name'))\r\n\r\n\r\nif __name__ == '__main__':\r\n    unittest.main()\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/tests/test_models/test_user.py b/tests/test_models/test_user.py
+--- a/tests/test_models/test_user.py	(revision c851efe5d54820709b034c6bc7c2bf1aa82e7603)
++++ b/tests/test_models/test_user.py	(date 1707686554145)
+@@ -14,10 +14,20 @@
+     def test_user_attributes(self):
+         """Test User class attributes."""
+         user = User()
+-        self.assertTrue(hasattr(user, 'email'))
+-        self.assertTrue(hasattr(user, 'password'))
+-        self.assertTrue(hasattr(user, 'first_name'))
+-        self.assertTrue(hasattr(user, 'last_name'))
++        self.assertIsInstance(user, User)
++        self.assertTrue(hasattr(user, 'id'))
++        self.assertTrue(hasattr(user, 'created_at'))
++        self.assertTrue(hasattr(user, 'updated_at'))
++        self.assertEqual(user.email, "")
++        self.assertEqual(user.password, "")
++        self.assertEqual(user.first_name, "")
++        self.assertEqual(user.last_name, "")
++
++    def test_user_to_dict(self):
++        user = User()
++        user_dict = user.to_dict()
++        expected_keys = ['__class__', 'id', 'created_at', 'updated_at']
++        self.assertEqual(sorted(user_dict.keys()), sorted(expected_keys))
+ 
+ 
+ if __name__ == '__main__':
+Index: file.json
+===================================================================
+diff --git a/file.json b/file.json
+deleted file mode 100644
+--- a/file.json	(revision c851efe5d54820709b034c6bc7c2bf1aa82e7603)
++++ /dev/null	(revision c851efe5d54820709b034c6bc7c2bf1aa82e7603)
+@@ -1,1 +0,0 @@
+-{"BaseModel.97749228-f5ee-49ab-99cb-2924b0d5a320": {"id": "97749228-f5ee-49ab-99cb-2924b0d5a320", "created_at": "2024-02-10T13:41:53.804301", "updated_at": "2024-02-10T13:41:53.804305", "__class__": "BaseModel"}, "BaseModel.cefe70f8-b9c6-4de9-9a96-7cfafe436ff2": {"id": "cefe70f8-b9c6-4de9-9a96-7cfafe436ff2", "created_at": "2024-02-10T13:41:53.804386", "updated_at": "2024-02-10T13:41:53.804388", "__class__": "BaseModel"}, "BaseModel.62a47283-a73c-411d-8e5f-33d60ee77ee9": {"id": "62a47283-a73c-411d-8e5f-33d60ee77ee9", "created_at": "2024-02-10T13:41:53.804454", "updated_at": "2024-02-10T13:41:53.804456", "__class__": "BaseModel"}, "BaseModel.060174a5-05b5-4caa-a43d-64a8a09fa097": {"id": "060174a5-05b5-4caa-a43d-64a8a09fa097", "created_at": "2024-02-10T13:41:53.804565", "updated_at": "2024-02-10T13:41:53.804566", "name": "ALX", "number": 89, "__class__": "BaseModel"}, "BaseModel.9ce54d47-4063-46fe-b341-9464376b0b14": {"id": "9ce54d47-4063-46fe-b341-9464376b0b14", "created_at": "2024-02-10T13:41:53.804641", "updated_at": "2024-02-10T13:41:53.804647", "__class__": "BaseModel"}}
+\ No newline at end of file
